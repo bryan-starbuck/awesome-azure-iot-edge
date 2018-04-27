@@ -54,3 +54,4 @@ A curated list of awesome [Azure IoT Edge](https://docs.microsoft.com/azure/iot-
 - [Modbus TCP](https://hub.docker.com/r/microsoft/azureiotedge-modbus-tcp/)
 
 ## Samples & Docs
+- [Connect MXChip IoT DevKit device to IoT Edge device via Modbus TCP](https://github.com/DevKitExamples/DevKitModbus#connect-to-iot-edge-device-gateway-as-modbus-tcp-device)
