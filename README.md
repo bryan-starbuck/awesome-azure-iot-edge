@@ -20,11 +20,14 @@ There are lots of options for how to build a dotnet docker image.  Set the base 
 Tricks to inspect or debug modules.
 
 Export the contents of a module and then inspect the folder structure.  
-- docker export <Docker Container ID> -o module.tar
+- docker export (Docker Container ID) -o module.tar
 - tar -xf module.tar
 
 Attach to a module with a shell.  Useful to debug networking.
-- docker exec -it <Docker Container Id>  /bin/bash
+- docker exec -it (Docker Container Id)  /bin/bash
+
+Remove a module from the local edge device container registry.  This will force the edgeAgent to reload it from the remote container registry.
+- docker rmi -f (ContainerRegistry\ModuleName:tag)
 
 ## Developer Tools
 - [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) - Develop, deploy, debug, and manage your IoT Edge solution in Visual Studio Code
