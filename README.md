@@ -1,6 +1,30 @@
-# Awesome-Azure-IoT-Edge [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# My-Azure-IoT-Edge-Resources [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
 
 A curated list of awesome [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) projects and resources.
+
+## Docker Create Options 
+There are many options for the CreateOptions that will enable features for a module.  Setting up a Volume to persist data? Exposing a port on the host?  Using Privileged mode to enable access to hardware on the UArt?  It can be done in the create options.  The trick is to go to the docker documentation for all the options:
+- (Docker Container Create Options)[https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate]
+
+## Redis
+Using Redis on IoT Edge is really simple.  I've used a regular redis docker image as an edge module.  I've also tried the RedisEdge module but found the main Redis docker easier to customize.  
+- (Docker Redis)[https://hub.docker.com/_/redis/]
+- (RedisEdge module)[https://azuremarketplace.microsoft.com/en-us/marketplace/apps/garantiadata.redis-edge] 
+A module can connect to a redis module with <RedisModuleName>:6379
+
+## Dotnet Docker images
+There are lots of options for how to build a dotnet docker image.  Set the base image to Alpine linux to reduce the size for example.  
+- (Dotnet Docker Images)[https://github.com/dotnet/dotnet-docker]
+
+## Docker commands
+Tricks to inspect or debug modules.
+
+Export the contents of a module and then inspect the folder structure.  
+- docker export <Docker Container ID> -o module.tar
+- tar -xf module.tar
+
+Attach to a module with a shell.  
+- docker exec -it <Docker Container Id>  /bin/bash
 
 ## Developer Tools
 - [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge) - Develop, deploy, debug, and manage your IoT Edge solution in Visual Studio Code
@@ -15,42 +39,8 @@ A curated list of awesome [Azure IoT Edge](https://docs.microsoft.com/azure/iot-
     - [Node.js module](https://github.com/Azure/generator-azure-iot-edge-module) - Run `yo` to generate Node.js module project.
     - C module
     - Java module
-
-- Azure Functions
-    - [C# Functions](https://github.com/Azure/dotnet-template-azure-iot-edge-function)
-
-- Azure Machine Learning
-    - [AI Toolkit for Azure IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge)
-
-## Dockfiles
-- Custom module
-    - .Net Core module
-        - [AMD64](https://github.com/Azure/dotnet-template-azure-iot-edge-module/blob/master/content/dotnet-template-azure-iot-edge-module/CSharp/Dockerfile.amd64)
-        - [AMD64-debug](https://github.com/Azure/dotnet-template-azure-iot-edge-module/blob/master/content/dotnet-template-azure-iot-edge-module/CSharp/Dockerfile.amd64.debug)
-        - [ARM32v7](https://github.com/Azure/dotnet-template-azure-iot-edge-module/blob/master/content/dotnet-template-azure-iot-edge-module/CSharp/Dockerfile.arm32v7)
-        - [WINDOWS-AMD64](https://github.com/Azure/dotnet-template-azure-iot-edge-module/blob/master/content/dotnet-template-azure-iot-edge-module/CSharp/Dockerfile.windows-amd64)
-    - Python module
-        - [AMD64](https://github.com/Azure/cookiecutter-azure-iot-edge-module/blob/master/%7B%7Bcookiecutter.module_name%7D%7D/Dockerfile)
-    - Node.js module
-        - [AMD64 and ARM32v7](https://github.com/Azure/generator-azure-iot-edge-module/blob/master/app/templates/Dockerfile)
-        - [WINDOWS-AMD64](https://github.com/Azure/generator-azure-iot-edge-module/blob/master/app/templates/Dockerfile.windows-amd64)
-
-- Azure Functions
-    - C# Functions
-        - [AMD64](https://github.com/Azure/dotnet-template-azure-iot-edge-function/blob/master/content/dotnet-template-azure-iot-edge-function/CSharp/Dockerfile)
-        - [AMD64-debug](https://github.com/Azure/dotnet-template-azure-iot-edge-function/blob/master/content/dotnet-template-azure-iot-edge-function/CSharp/Dockerfile.amd64.debug)
-        - [ARM32v7](https://github.com/Azure/dotnet-template-azure-iot-edge-function/blob/master/content/dotnet-template-azure-iot-edge-function/CSharp/Dockerfile.arm32v7)
-
-## Base images
-- IoT Edge runtime
-    - [Edge Hub](https://hub.docker.com/r/microsoft/azureiotedge-hub/)
-    - [Edge Agent](https://hub.docker.com/r/microsoft/azureiotedge-agent/)
-- [Azure Functions](https://hub.docker.com/r/microsoft/azureiotedge-functions-binding/)
-- [Azure Stream Analytics](https://hub.docker.com/r/microsoft/azureiotedge-azure-stream-analytics/)
-- SQL Server
-    - [Windows](https://hub.docker.com/r/microsoft/mssql-server-windows-developer/)
-    - [Linux](https://hub.docker.com/r/microsoft/mssql-server-linux/)
-- [Simulated Temperature Sensor](https://hub.docker.com/r/microsoft/azureiotedge-simulated-temperature-sensor/)
+    
+## Modules
 - [Modbus TCP](https://hub.docker.com/r/microsoft/azureiotedge-modbus-tcp/)
 
 ## Samples & Docs
